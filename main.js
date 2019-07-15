@@ -42,7 +42,7 @@ function createButton(id) {
         var key = button2['id']  //拿到用户点击按钮之后的取值 q w e r t...
         var x = prompt('请给我一个网址好吗@_@')
         hash[key] = x  // hash变更
-        img2.src = 'http://' + x + '/favicon.ico'
+        img2.src = 'https://' + x + '/favicon.ico'
         img2.onerror = function (xxx) {
             xxx.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
         }
