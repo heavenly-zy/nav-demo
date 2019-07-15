@@ -55,7 +55,7 @@ function createButton(id) {
 function createImage(domain) {
     var img = tag('img')
     if (domain) {
-        img.src = 'http://' + domain + '/favicon.ico'
+        img.src = 'https://' + domain + '/favicon.ico'
     } else {
         img.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
     }
@@ -119,7 +119,7 @@ function listenToUser(hash) {
         var website = hash[key]  // 得到按下键对应的网站
         if (website) {
             // location.href = 'http://' + website  
-            window.open('http://' + website, '_blank')//把当前地址变成新的网站地址,并在新窗口打开
+            window.open('https://' + website, '_blank')//把当前地址变成新的网站地址,并在新窗口打开
         } else {
             alert(`你还没有绑定网址，请先编辑网址。。。`)
         }
