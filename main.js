@@ -74,8 +74,8 @@ function init() {
     // 下面这个哈希不是数组，不需要有length
     var hash = {
         'b': 'bilibili.com', 'a': 'www.acfun.cn', 'z': 'zhihu.com', 'j': 'www.jianshu.com', 
-        'm': 'aidn.jp/mikutap/','g':'github.com','p':'www.pixiv.net','y':'ygocore.ys168.com',
-        'd':'dribbble.com','w':'wallhaven.cc','i':'iconfont.cn','c':'css-tricks.com','j':'javascript.ruanyifeng.com'
+        'm': 'aidn.jp/mikutap/','g':'github.com','y':'ygocore.ys168.com','w':'wallhaven.cc',
+        'i':'iconfont.cn','c':'css-tricks.com','j':'javascript.ruanyifeng.com'
     }
     //读档：取出 localStorage 中的 zzz 对应的 hash
     var hashInLocalStorage = getFromLocalStorage('zzz')
