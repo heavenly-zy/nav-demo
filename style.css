@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+kbd {
+    width: 4em;
+    height: 4em;
+    /* kbd是一个内联元素 */
+    display: inline-block;
+    /* 将小写字母变为大写字母 */
+    text-transform: uppercase;
+    position: relative;
+}
+
+kbd>button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: none;
+    border-radius: 5px;
+}
+
+kbd:hover>button {
+    display: inline-block;
+}
+
+body {
+    background: grey url(wall.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+main {
+    /* 容器水平居中 */
+    text-align: center;
+    /* 垂直居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 屏幕（视口）的高度viewport height */
+    height: 100vh;
+}
+
+#main {
+    /* 把容器wrapper变为内联元素 */
+    display: inline-block;
+}
+
+#main>div:nth-child(2) {
+    margin-left: -22px;
+}
+
+#main>div:nth-child(3) {
+    margin-left: -80px;
+}
+
+.wrapper {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.key {
+    width: 50px;
+    height: 45px;
+    background: linear-gradient(to bottom, #292929 0%, #111111 100%);
+    border: 1px solid #373737;
+    color: #C5C5C5;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px #1A1B1C, 0 0 0 2px #1F2020, 0 3px 0 2px #080808;
+    position: relative;
+    font-size: 16px;
+    font-family: Arial Rounded;
+    cursor: pointer;
+}
+
+.row {
+    margin: 20px;
+}
+
+.row .key {
+    margin: 0 10px;
+}
+
+.key img {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 4px;
+    bottom: 2px;
+}
+
+.key .text {
+    position: absolute;
+    left: 6px;
+    top: 2px;
+}
