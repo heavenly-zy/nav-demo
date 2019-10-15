@@ -42,7 +42,7 @@ function createButton(id) {
         var key = button2['id']  //拿到用户点击按钮之后的取值 q w e r t...
         var x = prompt('请给我一个网址好吗@_@')
         hash[key] = x  // hash变更
-        img2.src = 'http://' + x + '/favicon.ico'
+        img2.src = 'https://' + x + '/favicon.ico'
         img2.onerror = function (xxx) {
             xxx.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
         }
@@ -55,7 +55,7 @@ function createButton(id) {
 function createImage(domain) {
     var img = tag('img')
     if (domain) {
-        img.src = 'http://' + domain + '/favicon.ico'
+        img.src = 'https://' + domain + '/favicon.ico'
     } else {
         img.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
     }
@@ -74,8 +74,8 @@ function init() {
     // 下面这个哈希不是数组，不需要有length
     var hash = {
         'b': 'bilibili.com', 'a': 'www.acfun.cn', 'z': 'zhihu.com', 'j': 'www.jianshu.com', 
-        'm': 'aidn.jp/mikutap/','g':'github.com','p':'www.pixiv.net','y':'ygocore.ys168.com',
-        'd':'dribbble.com','w':'wallhaven.cc','i':'iconfont.cn','c':'css-tricks.com','j':'javascript.ruanyifeng.com'
+        'm': 'aidn.jp/mikutap/','g':'github.com','y':'ygocore.ys168.com','w':'wallhaven.cc',
+        'i':'iconfont.cn','c':'css-tricks.com','j':'javascript.ruanyifeng.com'
     }
     //读档：取出 localStorage 中的 zzz 对应的 hash
     var hashInLocalStorage = getFromLocalStorage('zzz')
@@ -119,7 +119,7 @@ function listenToUser(hash) {
         var website = hash[key]  // 得到按下键对应的网站
         if (website) {
             // location.href = 'http://' + website  
-            window.open('http://' + website, '_blank')//把当前地址变成新的网站地址,并在新窗口打开
+            window.open('https://' + website, '_blank')//把当前地址变成新的网站地址,并在新窗口打开
         } else {
             alert(`你还没有绑定网址，请先编辑网址。。。`)
         }
