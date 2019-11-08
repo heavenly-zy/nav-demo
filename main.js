@@ -42,7 +42,11 @@ function createButton(id) {
         var key = button2['id']  //拿到用户点击按钮之后的取值 q w e r t...
         var x = prompt('请给我一个网址好吗@_@')
         hash[key] = x  // hash变更
-        img2.src = 'https://' + x + '/favicon.ico'
+        if (/https/.test(x)) {
+            img2.src = x + '/favicon.ico'
+        } else {
+            img2.src = 'https://' + x + '/favicon.ico'
+        }
         img2.onerror = function (xxx) {
             xxx.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
         }
@@ -65,17 +69,16 @@ function createImage(domain) {
     return img
 }
 function init() {
-    var keys = {
-        '0': { 0: 'q', 1: 'w', 2: 'e', 3: 'r', 4: 't', 5: 'y', 6: 'u', 7: 'i', 8: 'o', 9: 'p', length: 10 },
-        '1': { 0: 'a', 1: 's', 2: 'd', 3: 'f', 4: 'g', 5: 'h', 6: 'j', 7: 'k', 8: 'l', length: 9 },
-        '2': { 0: 'z', 1: 'x', 2: 'c', 3: 'v', 4: 'b', 5: 'n', 6: 'm', length: 7 },
-        length: 3
-    }
+    var keys = [
+        ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+        ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+        ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
+    ]
     // 下面这个哈希不是数组，不需要有length
     var hash = {
-        'b': 'bilibili.com', 'a': 'www.acfun.cn', 'z': 'zhihu.com', 'j': 'www.jianshu.com', 
-        'm': 'aidn.jp/mikutap/','g':'github.com','y':'ygocore.ys168.com','w':'wallhaven.cc',
-        'i':'iconfont.cn','c':'css-tricks.com','j':'javascript.ruanyifeng.com'
+        'b': 'bilibili.com', 'a': 'www.acfun.cn', 'z': 'zhihu.com', 'j': 'www.jianshu.com',
+        'm': 'aidn.jp/mikutap/', 'g': 'github.com', 'y': 'ygocore.ys168.com', 'w': 'wallhaven.cc',
+        'i': 'iconfont.cn', 'c': 'css-tricks.com', 'j': 'javascript.ruanyifeng.com'
     }
     //读档：取出 localStorage 中的 zzz 对应的 hash
     var hashInLocalStorage = getFromLocalStorage('zzz')
@@ -117,11 +120,33 @@ function listenToUser(hash) {
     document.onkeypress = function (aaaa) {
         var key = aaaa['key']  // 拿到用户按下的键q w e r t...
         var website = hash[key]  // 得到按下键对应的网站
-        if (website) {
-            // location.href = 'http://' + website  
-            window.open('https://' + website, '_blank')//把当前地址变成新的网站地址,并在新窗口打开
+        if (website) { // 保证网址存在
+            if (/https/.test(website)) { // 用正则判断网址内是否存在'https'
+                window.open(website)
+            } else { // 网址内不存在'https'
+                // location.href = 'http://' + website  
+                window.open('https://' + website, '_blank')
+            }
         } else {
             alert(`你还没有绑定网址，请先编辑网址。。。`)
+
         }
+    }
+    let kbdClick = document.getElementsByClassName('key')
+    for (i = 0; i < kbdClick.length; i++) {
+        let b = kbdClick[i]
+        b.addEventListener('click', (e) => {
+            let key = e.currentTarget.firstChild.innerText.toLowerCase()
+            let website = hash[key]
+            if (website) {
+                if (/https/.test(website)) {
+                    window.open(website)
+                } else {
+                    window.open('https://' + website, '_blank')
+                }
+            } else {
+                alert(`你还没有绑定网址，请先编辑网址。。。`)
+            }
+        }, false)
     }
 }
