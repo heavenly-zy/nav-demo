@@ -42,7 +42,7 @@ function createButton(id) {
         var key = button2['id']  //拿到用户点击按钮之后的取值 q w e r t...
         var x = prompt('请给我一个网址好吗@_@')
         hash[key] = x  // hash变更
-        if (/https/.test(x)) {
+        if (/http/.test(x)) {
             img2.src = x + '/favicon.ico'
         } else {
             img2.src = 'https://' + x + '/favicon.ico'
@@ -121,7 +121,8 @@ function listenToUser(hash) {
         var key = aaaa['key']  // 拿到用户按下的键q w e r t...
         var website = hash[key]  // 得到按下键对应的网站
         if (website) { // 保证网址存在
-            if (/https/.test(website)) { // 用正则判断网址内是否存在'https'
+            if (/http/.test(website)) { // 用正则判断网址内是否存在'http'或者'https'
+            console.log('http')
                 window.open(website)
             } else { // 网址内不存在'https'
                 // location.href = 'http://' + website  
@@ -140,7 +141,7 @@ function listenToUser(hash) {
             let key = e.currentTarget.firstChild.innerText.toLowerCase()
             let website = hash[key]
             if (website) {
-                if (/https/.test(website)) {
+                if (/http/.test(website)) {
                     window.open(website)
                 } else {
                     window.open('https://' + website, '_blank')
