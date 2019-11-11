@@ -133,9 +133,10 @@ function listenToUser(hash) {
         }
     }
     let kbdClick = document.getElementsByClassName('key')
-    for (i = 0; i < kbdClick.length; i++) {
+    for (let i = 0; i < kbdClick.length; i++) {
         let b = kbdClick[i]
         b.addEventListener('click', (e) => {
+            if(e.target.tagName === 'BUTTON') return // 防止点击edit按钮的时候跳转
             let key = e.currentTarget.firstChild.innerText.toLowerCase()
             let website = hash[key]
             if (website) {
