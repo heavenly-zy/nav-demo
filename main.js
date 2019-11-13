@@ -129,18 +129,20 @@ function generateKeyboard(keys, hash) {
 }
 function listenToUser(hash) {
     document.onkeypress = function (aaaa) {
-        var key = aaaa['key']  // 拿到用户按下的键q w e r t...
+        var key = aaaa['key']  // 拿到用户按下的键
         var website = hash[key]  // 得到按下键对应的网站
-        if (website) { // 保证网址存在
-            if (/http/.test(website)) { // 用正则判断网址内是否存在'http'或者'https'
-                console.log('http')
-                window.open(website)
-            } else { // 网址内不存在'https'
-                // location.href = 'http://' + website  
-                window.open('https://' + website, '_blank')
+        if (keys[0].indexOf(key) !== -1 || keys[1].indexOf(key) !== -1 || keys[2].indexOf(key) !== -1) { // 保证用户按下的键为q w e r t...
+            if (website) { // 保证网址存在
+                if (/http/.test(website)) { // 用正则判断网址内是否存在'http'或者'https'
+                    console.log('http')
+                    window.open(website)
+                } else { // 网址内不存在'https'
+                    // location.href = 'http://' + website  
+                    window.open('https://' + website, '_blank')
+                }
+            } else {
+                alert(`你还没有绑定网址，请先编辑网址。。。`)
             }
-        } else {
-            alert(`你还没有绑定网址，请先编辑网址。。。`)
         }
     }
     let kbdClick = document.getElementsByClassName('key')
