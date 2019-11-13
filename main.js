@@ -11,6 +11,17 @@ generateKeyboard(keys, hash)
 // 3. 监听用户动作
 listenToUser(hash)
 
+// 4. search
+var input = document.getElementsByTagName('input')[0]
+function inputFocus() {
+    input.placeholder = ''
+    input.classList.add('active')
+}
+function inputBlur() {
+    input.classList.remove('active')
+    input.placeholder = 'Search'
+    input.value = ''
+}
 
 //下面是工具函数
 function getFromLocalStorage(name) {
@@ -122,7 +133,7 @@ function listenToUser(hash) {
         var website = hash[key]  // 得到按下键对应的网站
         if (website) { // 保证网址存在
             if (/http/.test(website)) { // 用正则判断网址内是否存在'http'或者'https'
-            console.log('http')
+                console.log('http')
                 window.open(website)
             } else { // 网址内不存在'https'
                 // location.href = 'http://' + website  
@@ -130,14 +141,13 @@ function listenToUser(hash) {
             }
         } else {
             alert(`你还没有绑定网址，请先编辑网址。。。`)
-
         }
     }
     let kbdClick = document.getElementsByClassName('key')
     for (let i = 0; i < kbdClick.length; i++) {
         let b = kbdClick[i]
         b.addEventListener('click', (e) => {
-            if(e.target.tagName === 'BUTTON') return // 防止点击edit按钮的时候跳转
+            if (e.target.tagName === 'BUTTON') return // 防止点击edit按钮的时候跳转
             let key = e.currentTarget.firstChild.innerText.toLowerCase()
             let website = hash[key]
             if (website) {

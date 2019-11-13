@@ -6,6 +6,52 @@
 a {
     text-decoration: none;
 }
+body{
+    overflow: hidden;
+}
+
+body>header .search {
+  position: relative;
+}
+
+body>header input {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 100px;
+    width: 200px;
+    outline: none;
+    border: none;
+    padding: 13px 15px;
+    border-radius: 30px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    font-size: small;
+    font-weight: normal;
+    font-family: "Microsoft Yahei";
+    transition: all 0.5s;
+}
+
+body>header input::placeholder {
+    color: white;
+}
+
+body>header input:hover {
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(15px);
+}
+
+body>header input:hover::placeholder {
+    color: #676767;
+}
+
+.input.active {
+    width: 500px;
+    background: white;
+}
 
 kbd {
     width: 4em;
@@ -79,7 +125,7 @@ main {
     cursor: pointer;
 }
 
-.key:hover{
+.key:hover {
     box-shadow: 0 0 0 1px #1A1B1C, 0 0 0 2px #1F2020, 0 0px 4px 3px #080808;
 }
 
