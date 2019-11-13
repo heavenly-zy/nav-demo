@@ -16,11 +16,13 @@ var input = document.getElementsByTagName('input')[0]
 function inputFocus() {
     input.placeholder = ''
     input.classList.add('active')
+    document.onkeypress = null // 聚焦时取消对键盘事件的监听
 }
 function inputBlur() {
     input.classList.remove('active')
     input.placeholder = 'Search'
     input.value = ''
+    listenToUser(hash) // 鼠标从输入框移除时恢复对键盘的监听
 }
 
 //下面是工具函数
